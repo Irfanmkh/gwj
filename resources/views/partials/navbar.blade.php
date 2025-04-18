@@ -1,97 +1,30 @@
-<!-- Navbar Transparan di Atas Jumbotron -->
-<nav class="navbar absolute top-0 left-0 w-full bg-transparent text-white h-[80px] flex items-center justify-center z-50">
-    <button id="burger-menu-button"
-        class="bg-white/10 backdrop-blur-md rounded-full py-3 px-6 text-black font-bold hover:scale-105 transition-transform shadow-lg">
-        Open Nav Menu
-    </button>
-</nav>
+<nav x-data="{ scrolled: false, hover: false }" x-init="window.addEventListener('scroll', () => {
+    scrolled = window.scrollY > 50;
+})" @mouseenter="hover = true" @mouseleave="hover = false"
+    :class="{
+        'w-full': !scrolled || hover,
+        'w-1/2 mx-auto': scrolled && !hover,
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out': true
+    }"
+    class="bg-white shadow-md rounded-full px-6 py-3">
 
-<nav>
-    <div id="dropdown"
-        class="fixed top-0 right-0 bg-[#1E1F26] text-white w-96 z-50 h-full translate-x-full transition-all duration-500 ease-in-out">
-        <div class="mb-4 px-6 pt-6 flex items-center justify-between">
-            <img src="https://legende.cc/pfp.png" alt="Logo" width="70" />
-            <button class="bg-[#605CEB] w-16 h-16 rounded-full grid place-content-center ml-auto"
-                id="close-dropdown-button">
-                <span class="block text-2xl font-extralight">✕</span>
-            </button>
+    <!-- Flex container untuk memposisikan elemen-elemen navbar -->
+    <div class="flex justify-between items-center ">
+
+        <!-- Menampilkan nama sesuai kondisi scroll -->
+        <div class="text-xl font-bold text-amber-700 ">
+            <!-- Jika scrolled, hanya menampilkan "IRFAN", jika tidak "IRFAN MAULANA KHAKIKI" -->
+            <span x-text="scrolled ? 'IRFAN' : 'IRFAN MAULANA KHAKIKI'"></span>
         </div>
-        <h2 class="opacity-60 text-xs uppercase mt-10 ml-6">Navigation</h2>
-        <div class="h-[1px] w-full bg-gray-500 mt-4"></div>
-        <div class="px-6" id="links">
-            <!-- All the paths go here (JS) -->
-        </div>
+
+        <!-- Daftar navigasi yang hanya muncul jika tidak ada scroll atau hover -->
+        <ul :class="{ 'hidden': scrolled && !hover }" class="flex gap-4 text-amber-700">
+            <!-- Item navigasi Home -->
+            <li><a href="#" class="hover:text-blue-600">Home</a></li>
+            <!-- Item navigasi About -->
+            <li><a href="#" class="hover:text-blue-600">About</a></li>
+            <!-- Item navigasi Contact -->
+            <li><a href="#" class="hover:text-blue-600">Contact</a></li>
+        </ul>
     </div>
 </nav>
-
-@push('js')
-    <script>
-        const paths = [{
-                name: "Home",
-                link: "/"
-            },
-            {
-                name: "Contact",
-                link: "/contact"
-            },
-        ];
-
-        const openBurgerMenuButton = document.getElementById("burger-menu-button");
-
-        for (const path of paths) {
-            const link = document.createElement("a");
-            link.innerHTML = `
-    <a class="py-4 text-3xl block transition-transform duration-500 ease-in-out translate-x-full link font-bold"
-        id="${path.name}"
-        href="${path.link}">
-        ${path.name}
-    </a>`;
-            document.getElementById("links").appendChild(link);
-        }
-
-        const dropdown = document.getElementById("dropdown");
-        const links = document.querySelectorAll(".link");
-
-        function openBurgerMenu() {
-            openBurgerMenuButton.innerText = "Close Nav Menu";
-            openBurgerMenuButton.addEventListener("click", () => {
-                closeBurgerMenu();
-            });
-            dropdown?.classList.remove("translate-x-full");
-            dropdown?.classList.add("translate-x-0");
-            for (const link of links) {
-                link.classList.remove("translate-x-full");
-                link.classList.add("translate-x-0");
-            }
-        }
-
-        function closeBurgerMenu() {
-            openBurgerMenuButton.innerText = "Open Nav Menu";
-            openBurgerMenuButton.addEventListener("click", () => {
-                openBurgerMenu();
-            });
-            for (const link of links) {
-                link.classList.remove("translate-x-0");
-                link.classList.add("translate-x-full");
-            }
-            dropdown?.classList.remove("translate-x-0");
-            dropdown?.classList.add("translate-x-full");
-        }
-
-        for (var index = 0; index < links.length; index++) {
-            links[index].style.transitionDelay = index * 100 + "ms";
-        }
-
-        openBurgerMenuButton.addEventListener("click", () => {
-            openBurgerMenu();
-        });
-
-        document
-            .getElementById("close-dropdown-button")
-            .addEventListener("click", () => {
-                closeBurgerMenu();
-            });
-
-        openBurgerMenu();
-    </script>
-@endpush
