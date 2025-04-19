@@ -62,6 +62,8 @@
                     <a class="block px-4 py-2 mt-4  font-bold border-b border-transparent text-sm bg-white/50 backdrop-blur shadow-md rounded-full"
                         href="/pendidikan">Project</a>
                     <a class="block px-4 py-2 mt-4 font-bold border-b border-transparent text-sm bg-white/50 backdrop-blur shadow-md rounded-full"
+                        href="/penelitian">Blog</a>
+                    <a class="block px-4 py-2 mt-4 font-bold border-b border-transparent text-sm bg-white/50 backdrop-blur shadow-md rounded-full"
                         href="/penelitian">Contact</a>
 
                 </nav>
@@ -69,9 +71,14 @@
         </div>
 
         <!-- Daftar navigasi -->
-        <ul class="hidden lg:flex gap-8 lg:text-3xl">
+        <ul class="hidden lg:flex lg:text-3xl"
+        :class="{
+            'gap-8':!scrolled,
+            'gap-6':scrolled
+        }">
             <li><a href="#" class="hover:text-blue-600">About</a></li>
             <li><a href="#" class="hover:text-blue-600">Project</a></li>
+            <li><a href="#" class="hover:text-blue-600">Blog</a></li>
             <li><a href="#" class="hover:text-blue-600">Contact</a></li>
         </ul>
     </div>
