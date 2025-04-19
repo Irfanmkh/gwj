@@ -2,12 +2,12 @@
 
 @section('content')
   {{-- Jumbotron --}}
-  <section id="jumbotron" class="h-screen bg-grey-600 flex items-center justify-center text-white pt-20">
-    <div class="text-center">
-      <h1 class="text-5xl font-bold">Welcome</h1>
-      <p class="text-xl mt-4">This is the jumbotron section.</p>
-    </div>
-  </section>
+<section id="jumbotron"
+    class="h-screen flex items-center justify-center text-white pt-20
+           bg-[url('https://i2.wp.com/blog.tripcetera.com/id/wp-content/uploads/2020/10/Danau-Toba-edited.jpg')]
+           bg-cover bg-center">
+</section>
+
 
   {{-- Section berikutnya --}}
   <section id="about" class="py-20 container mx-auto px-4">
