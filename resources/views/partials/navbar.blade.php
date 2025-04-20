@@ -5,7 +5,7 @@
         // Ketika tidak di-scroll, navbar lebar penuh
         'w-full  px-6 py-5': !scrolled,
         // Ketika di-scroll, navbar lebar 1/2
-        'w-1/2 md:w-1/4 mx-auto mt-8 lg:py-4  ': scrolled,
+        'w-1/2 md:w-1/3 mx-auto mt-8 lg:py-4  ': scrolled,
         // Ketika di-scroll, beri margin-top untuk memberikan jarak
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out': true,
     
@@ -57,7 +57,7 @@
 
                     {{-- Regular Mobile Links --}}
                     <a class="block px-4 py-2 mt-4 font-bold border-b border-transparent text-sm bg-white/50 backdrop-blur shadow-md rounded-full"
-                          href="/about">About</a>
+                        href="/about">About</a>
 
                     <a class="block px-4 py-2 mt-4  font-bold border-b border-transparent text-sm bg-white/50 backdrop-blur shadow-md rounded-full"
                         href="/pendidikan">Project</a>
@@ -72,10 +72,10 @@
 
         <!-- Daftar navigasi -->
         <ul class="hidden lg:flex lg:text-3xl"
-        :class="{
-            'gap-8':!scrolled,
-            'gap-6':scrolled
-        }">
+            :class="{
+                'gap-8': !scrolled,
+                'gap-6': scrolled
+            }">
             <li><a href="#" class="hover:text-blue-600">About</a></li>
             <li><a href="#" class="hover:text-blue-600">Project</a></li>
             <li><a href="#" class="hover:text-blue-600">Blog</a></li>
